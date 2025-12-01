@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Dashboard</title>
+<style>
+body {
+    background: linear-gradient(135deg,#00b09b,#96c93d);
+    text-align:center;
+    padding-top:120px;
+    font-family:Arial;
+    color:white;
+    margin:0;
+}
+
+.navbar { position:fixed; top:0; width:100%; background:rgba(255,255,255,0.15); backdrop-filter:blur(10px); padding:15px 0; display:flex; justify-content:center; }
+.navbar a { margin:0 15px; color:white; text-decoration:none; }
+
+button {
+    padding:10px 20px;
+    border:none;
+    background:white;
+    color:black;
+    border-radius:8px;
+    cursor:pointer;
+    font-weight:bold;
+}
+</style>
+</head>
+<body>
+
+<div class="navbar">
+    <a href="/">Home</a>
+    <a href="/register/">Register</a>
+    <a href="/login/">Login</a>
+    <a href="/dashboard/">Dashboard</a>
+    <a href="/profile/">Profile</a>
+</div>
+
+<h1>You Logged In Successfully 🎉</h1>
+
+<button onclick="logout()">Logout</button>
+
+<script>
+// If not logged in → redirect
+if (!localStorage.getItem("user")) {
+    window.location.href = "/login/";
+}
+
+function logout() {
+    localStorage.clear();
+    window.location.href = "/login/";
+}
+</script>
+
+</body>
+</html>

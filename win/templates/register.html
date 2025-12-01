@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Register</title>
+
+<style>
+/* same animated styles as earlier */
+body {
+    background: linear-gradient(135deg,#6a11cb,#2575fc);
+    font-family: Arial;
+    text-align:center;
+    padding-top:100px;
+    color:white;
+    margin:0;
+}
+
+/* Navbar */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(10px);
+    display: flex;
+    justify-content: center;
+    padding: 15px 0;
+}
+.navbar a { margin:0 15px; color:white; text-decoration:none; }
+
+/* Card */
+.card {
+    width:320px;
+    margin:auto;
+    background:white;
+    color:black;
+    padding:25px;
+    border-radius:12px;
+}
+input, button { width:90%; padding:10px; margin:10px; border:none; border-radius:8px; }
+button { background:#2575fc; color:white; font-weight:bold; cursor:pointer; }
+
+.msg { font-weight:bold; }
+</style>
+
+</head>
+<body>
+
+<!-- NAVBAR -->
+<div class="navbar">
+    <a href="/">Home</a>
+    <a href="/register/">Register</a>
+    <a href="/login/">Login</a>
+    <a href="/dashboard/">Dashboard</a>
+</div>
+
+<!-- CARD -->
+<div class="card">
+<h2>Create Account</h2>
+
+<input id="username" placeholder="Username">
+<input id="password" type="password" placeholder="Password">
+
+<button onclick="registerUser()">Register</button>
+
+<p id="message" class="msg"></p>
+</div>
+
+<script>
+function registerUser() {
+    let u = username.value;
+    let p = password.value;
+
+    if (!u || !p) {
+        message.innerHTML = "Please fill all fields ❌";
+        message.style.color = "red";
+        return;
+    }
+
+    // Save to LocalStorage
+    localStorage.setItem("user", u);
+    localStorage.setItem("pass", p);
+
+    message.innerHTML = "Registration Successful 🎉";
+    message.style.color = "green";
+
+    setTimeout(() => { window.location.href = "/login/"; }, 1500);
+}
+</script>
+
+</body>
+</html>

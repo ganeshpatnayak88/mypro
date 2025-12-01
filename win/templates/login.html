@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Login</title>
+
+<style>
+body {
+    background: linear-gradient(135deg,#ff416c,#ff4b2b);
+    text-align:center;
+    padding-top:100px;
+    margin:0;
+    color:white;
+    font-family:Arial;
+}
+
+/* NAV */
+.navbar {
+    position:fixed; top:0; width:100%;
+    background:rgba(255,255,255,0.15);
+    backdrop-filter:blur(10px);
+    padding:15px 0;
+    display:flex; justify-content:center;
+}
+.navbar a { margin:0 15px; color:white; text-decoration:none; }
+
+/* CARD */
+.card {
+    width:320px;
+    margin:auto;
+    background:white;
+    color:black;
+    padding:25px;
+    border-radius:12px;
+}
+input,button { width:90%; padding:10px; margin:10px; border:none; border-radius:8px; }
+button { background:#ff416c; color:white; font-weight:bold; cursor:pointer; }
+
+.error { color:red; }
+.success { color:green; }
+</style>
+</head>
+<body>
+
+<div class="navbar">
+    <a href="/">Home</a>
+    <a href="/register/">Register</a>
+    <a href="/login/">Login</a>
+    <a href="/dashboard/">Dashboard</a>
+</div>
+
+<div class="card">
+<h2>Login</h2>
+
+<input id="username" placeholder="Username">
+<input id="password" type="password" placeholder="Password">
+
+<button onclick="loginUser()">Login</button>
+
+<p id="message"></p>
+</div>
+
+<script>
+function loginUser() {
+    let u = username.value;
+    let p = password.value;
+
+    let savedUser = localStorage.getItem("user");
+    let savedPass = localStorage.getItem("pass");
+
+    if (u === savedUser && p === savedPass) {
+        message.innerHTML = "Login Successful 🎉";
+        message.className = "success";
+        setTimeout(() => window.location.href = "/dashboard/", 1500);
+    } else {
+        message.innerHTML = "Incorrect username or password ❌";
+        message.className = "error";
+    }
+}
+</script>
+
+</body>
+</html>

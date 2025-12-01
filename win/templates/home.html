@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Your Profile</title>
+<style>
+body {
+    background: linear-gradient(135deg,#8360c3,#2ebf91);
+    color:white;
+    padding-top:120px;
+    font-family:Arial;
+    text-align:center;
+    margin:0;
+}
+
+.navbar { position:fixed; top:0; width:100%; background:rgba(255,255,255,0.15); backdrop-filter:blur(10px); padding:15px 0; display:flex; justify-content:center; }
+.navbar a { margin:0 15px; color:white; text-decoration:none; }
+
+.profile-box {
+    background:white;
+    color:black;
+    width:350px;
+    margin:auto;
+    padding:30px;
+    border-radius:12px;
+}
+</style>
+</head>
+<body>
+
+<div class="navbar">
+    <a href="/">Home</a>
+    <a href="/register/">Register</a>
+    <a href="/login/">Login</a>
+    <a href="/dashboard/">Dashboard</a>
+    <a href="/profile/">Profile</a>
+</div>
+
+<div class="profile-box">
+    <h2>Your Profile 👤</h2>
+    <p><b>Username:</b> <span id="usernameLabel"></span></p>
+
+    <button onclick="window.location.href='/dashboard/'">Back</button>
+</div>
+
+<script>
+let user = localStorage.getItem("user");
+
+// Redirect if no login
+if (!user) {
+    window.location.href = "/login/";
+}
+
+document.getElementById("usernameLabel").innerText = user;
+</script>
+
+</body>
+</html>
